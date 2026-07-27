@@ -1,8 +1,10 @@
 // ---------- Navegación móvil ----------
 const navToggle = document.getElementById('navToggle');
 const nav = document.getElementById('nav');
-navToggle.addEventListener('click', () => nav.classList.toggle('open'));
-nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+if (navToggle && nav) {
+  navToggle.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+}
 
 // ---------- Datos de técnicas ----------
 const tecnicas = [
@@ -22,6 +24,55 @@ const searchInput = document.getElementById('searchInput');
 const filterBtns = document.querySelectorAll('.filter-btn');
 let activeCat = 'todas';
 
+const carouselTrack = document.getElementById('carouselTrack');
+const carouselPrev = document.getElementById('carouselPrev');
+const carouselNext = document.getElementById('carouselNext');
+const carouselIndicators = document.getElementById('carouselIndicators');
+let carouselIndex = 0;
+
+function renderCarousel(){
+  if (!carouselTrack) return;
+  carouselTrack.innerHTML = tecnicas.map(t => `
+    <div class="card carousel-item">
+      <div class="image-placeholder">Imagen de ${t.titulo}</div>
+      <h3>${t.titulo}</h3>
+      <p>${t.texto}</p>
+      <span class="tag">${t.cat}</span>
+    </div>
+  `).join('');
+
+  carouselIndicators.innerHTML = tecnicas.map((_, index) => `
+    <button class="carousel-indicator${index === carouselIndex ? ' active' : ''}" data-index="${index}" aria-label="Ir a táctica ${index + 1}"></button>
+  `).join('');
+  updateCarousel();
+}
+
+function updateCarousel(){
+  if (!carouselTrack) return;
+  const itemWidth = carouselTrack.querySelector('.carousel-item')?.offsetWidth || 280;
+  carouselTrack.style.transform = `translateX(-${carouselIndex * (itemWidth + 16)}px)`;
+  carouselIndicators.querySelectorAll('.carousel-indicator').forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === carouselIndex);
+  });
+}
+
+function moveCarousel(direction){
+  carouselIndex += direction;
+  if (carouselIndex < 0) carouselIndex = tecnicas.length - 1;
+  if (carouselIndex >= tecnicas.length) carouselIndex = 0;
+  updateCarousel();
+}
+
+carouselPrev?.addEventListener('click', () => moveCarousel(-1));
+carouselNext?.addEventListener('click', () => moveCarousel(1));
+carouselIndicators?.addEventListener('click', (event) => {
+  const target = event.target;
+  if (target.matches('.carousel-indicator')){
+    carouselIndex = Number(target.dataset.index);
+    updateCarousel();
+  }
+});
+
 function renderTecnicas(){
   const query = searchInput.value.trim().toLowerCase();
   const filtradas = tecnicas.filter(t => {
@@ -32,6 +83,7 @@ function renderTecnicas(){
 
   grid.innerHTML = filtradas.map(t => `
     <div class="card">
+      <div class="image-placeholder">Imagen de ${t.titulo}</div>
       <h3>${t.titulo}</h3>
       <p>${t.texto}</p>
       <span class="tag">${t.cat}</span>
@@ -41,25 +93,50 @@ function renderTecnicas(){
   noResults.classList.toggle('hidden', filtradas.length !== 0);
 }
 
-searchInput.addEventListener('input', renderTecnicas);
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    activeCat = btn.dataset.cat;
-    renderTecnicas();
+if (searchInput) {
+  searchInput.addEventListener('input', renderTecnicas);
+}
+if (filterBtns.length) {
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      renderTecnicas();
+    });
   });
-});
+}
 
-renderTecnicas();
+if (carouselTrack) {
+  renderCarousel();
+}
+if (grid) {
+  renderTecnicas();
+}
 
 // ---------- Quiz de autoevaluación ----------
 const preguntas = [
-  { texto: "¿Con qué frecuencia te sientes abrumado/a por tus responsabilidades?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
-  { texto: "¿Tienes dificultad para conciliar o mantener el sueño por preocupaciones?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
-  { texto: "¿Notas tensión muscular, dolores de cabeza o fatiga sin causa física clara?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
-  { texto: "¿Te cuesta concentrarte por pensamientos repetitivos o negativos?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
-  { texto: "¿Evitas situaciones sociales o tareas por miedo o ansiedad anticipada?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
+  { texto: "Me ha costado mucho descargar la tensión." },
+  { texto: "Me di cuenta que tenía la boca seca." },
+  { texto: "No podía sentir ningún sentimiento positivo." },
+  { texto: "Se me hizo difícil respirar." },
+  { texto: "Se me hizo difícil tomar la iniciativa para hacer cosas." },
+  { texto: "Reaccioné exageradamente en ciertas situaciones." },
+  { texto: "Sentí que mis manos temblaban." },
+  { texto: "He sentido que estaba gastando una gran cantidad de energía." },
+  { texto: "Estaba preocupado por situaciones en las cuales podía tener pánico o en las que podría hacer el ridículo." },
+  { texto: "He sentido que no había nada que me ilusionara." },
+  { texto: "Me he sentido inquieto." },
+  { texto: "Se me hizo difícil relajarme." },
+  { texto: "Me sentí triste y deprimido." },
+  { texto: "No toleré nada que no me permitiera continuar con lo que estaba haciendo." },
+  { texto: "Sentí que estaba al punto de pánico." },
+  { texto: "No me pude entusiasmar por nada." },
+  { texto: "Sentí que valía muy poco como persona." },
+  { texto: "He tendido a me sentirme enfadado con facilidad." },
+  { texto: "Sentí los latidos de mi corazón a pesar de no haber hecho ningún esfuerzo físico." },
+  { texto: "Tuve miedo sin razón." },
+  { texto: "Sentí que la vida no tenía ningún sentido." },
 ];
 
 const quizContainer = document.getElementById('quizContainer');
@@ -68,22 +145,26 @@ const quizResult = document.getElementById('quizResult');
 quizContainer.innerHTML = preguntas.map((p, i) => `
   <div class="quiz-question">
     <p>${i + 1}. ${p.texto}</p>
-    ${p.opciones.map((op, j) => `
-      <label>
-        <input type="radio" name="q${i}" value="${j}"> ${op}
-      </label>
-    `).join('')}
+    <div class="quiz-options">
+      <label><input type="radio" name="q${i}" value="0"> 0</label>
+      <label><input type="radio" name="q${i}" value="1"> 1</label>
+      <label><input type="radio" name="q${i}" value="2"> 2</label>
+      <label><input type="radio" name="q${i}" value="3"> 3</label>
+    </div>
   </div>
 `).join('');
 
 document.getElementById('quizSubmit').addEventListener('click', () => {
   let total = 0;
   let respondidas = 0;
+  const respuestas = [];
 
   preguntas.forEach((_, i) => {
     const seleccion = document.querySelector(`input[name="q${i}"]:checked`);
     if (seleccion) {
-      total += Number(seleccion.value);
+      const valor = Number(seleccion.value);
+      total += valor;
+      respuestas.push(valor);
       respondidas++;
     }
   });
@@ -94,25 +175,46 @@ document.getElementById('quizSubmit').addEventListener('click', () => {
     return;
   }
 
-  const maxPuntaje = (preguntas[0].opciones.length - 1) * preguntas.length;
-  const porcentaje = Math.round((total / maxPuntaje) * 100);
+  const subescalaDepresion = [2, 4, 9, 12, 15, 16, 20].reduce((sum, index) => sum + respuestas[index], 0);
+  const subescalaAnsiedad = [1, 3, 6, 8, 14, 18, 19].reduce((sum, index) => sum + respuestas[index], 0);
+  const subescalaStress = [0, 5, 7, 10, 11, 13, 17].reduce((sum, index) => sum + respuestas[index], 0);
 
-  let nivel, consejo;
-  if (porcentaje <= 25) {
-    nivel = "Bajo";
-    consejo = "Tus niveles de estrés/ansiedad parecen manejables. Mantén tus hábitos actuales.";
-  } else if (porcentaje <= 50) {
-    nivel = "Moderado";
-    consejo = "Podrías beneficiarte de técnicas de respiración y organización del tiempo.";
-  } else if (porcentaje <= 75) {
-    nivel = "Alto";
-    consejo = "Considera incorporar mindfulness, ejercicio regular y mejorar tu higiene de sueño.";
-  } else {
-    nivel = "Muy alto";
-    consejo = "Te recomendamos buscar apoyo profesional (psicólogo/a) además de estas técnicas.";
+  function interpretarDASS(valor, tipo) {
+    if (tipo === 'Depresión') {
+      if (valor <= 4) return 'Normal';
+      if (valor <= 6) return 'Leve';
+      if (valor <= 10) return 'Moderado';
+      if (valor <= 13) return 'Grave';
+      return 'Muy grave';
+    }
+    if (tipo === 'Ansiedad') {
+      if (valor <= 3) return 'Normal';
+      if (valor <= 5) return 'Leve';
+      if (valor <= 7) return 'Moderado';
+      if (valor <= 9) return 'Grave';
+      return 'Muy grave';
+    }
+    if (tipo === 'Estrés') {
+      if (valor <= 7) return 'Normal';
+      if (valor <= 9) return 'Leve';
+      if (valor <= 13) return 'Moderado';
+      if (valor <= 17) return 'Grave';
+      return 'Muy grave';
+    }
+    return 'No definido';
   }
 
-  quizResult.innerHTML = `<strong>Nivel estimado: ${nivel} (${porcentaje}%)</strong><p>${consejo}</p><p><em>Esta autoevaluación es orientativa y no reemplaza un diagnóstico profesional.</em></p>`;
+  const resultadoDepresion = interpretarDASS(subescalaDepresion, 'Depresión');
+  const resultadoAnsiedad = interpretarDASS(subescalaAnsiedad, 'Ansiedad');
+  const resultadoStress = interpretarDASS(subescalaStress, 'Estrés');
+
+  quizResult.innerHTML = `
+    <strong>Resultados DASS-21</strong>
+    <p>Depresión: ${subescalaDepresion} puntos — ${resultadoDepresion}</p>
+    <p>Ansiedad: ${subescalaAnsiedad} puntos — ${resultadoAnsiedad}</p>
+    <p>Estrés: ${subescalaStress} puntos — ${resultadoStress}</p>
+    <p><em>Esta autoevaluación es orientativa. Si tienes resultados moderados o superiores, considera buscar apoyo profesional.</em></p>
+  `;
   quizResult.classList.remove('hidden');
 });
 

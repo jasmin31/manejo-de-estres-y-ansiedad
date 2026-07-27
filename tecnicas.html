@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tácticas - Calma</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-inner">
+    <span class="logo">🧘 Calma</span>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+    <nav class="nav" id="nav">
+      <a href="index.html">Inicio</a>
+      <a href="estres.html">Estrés</a>
+      <a href="ansiedad.html">Ansiedad</a>
+      <a href="tecnicas.html">Tácticas</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+  <section class="section page page-tecnicas alt">
+    <div class="section-inner">
+      <h1>Tácticas</h1>
+      <p>Explora las mejores técnicas con un carrusel y elige la que mejor te funcione.</p>
+      <div class="carousel" id="carousel">
+        <button class="carousel-btn prev" id="carouselPrev" aria-label="Anterior">‹</button>
+        <div class="carousel-track" id="carouselTrack"></div>
+        <button class="carousel-btn next" id="carouselNext" aria-label="Siguiente">›</button>
+      </div>
+      <div class="carousel-indicators" id="carouselIndicators"></div>
+
+      <div class="tecnicas-tools">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar técnica (ej. respiración, sueño, ejercicio)...">
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-cat="todas">Todas</button>
+          <button class="filter-btn" data-cat="respiracion">Respiración</button>
+          <button class="filter-btn" data-cat="cuerpo">Cuerpo</button>
+          <button class="filter-btn" data-cat="mente">Mente</button>
+          <button class="filter-btn" data-cat="habitos">Hábitos</button>
+        </div>
+      </div>
+      <div class="cards" id="tecnicasGrid"></div>
+      <p id="noResults" class="no-results hidden">No se encontraron técnicas.</p>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <p>&copy; 2026 Calma — Sitio informativo sobre estrés y ansiedad.</p>
+</footer>
+<script src="js/script.js"></script>
+</body>
+</html>

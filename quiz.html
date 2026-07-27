@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Calma</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <span class="logo">🧘 Calma</span>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+            <nav class="nav" id="nav">
+                <a href="index.html">Inicio</a>
+                <a href="estres.html">Estrés</a>
+                <a href="ansiedad.html">Ansiedad</a>
+                <a href="tecnicas.html">Tácticas</a>
+                <a href="quiz.html">Quiz</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <section class="section page page-quiz">
+            <div class="section-inner">
+                <div class="quiz-container">
+                    <h2 class="quiz-title">DASS-21</h2>
+                    <p class="quiz-intro">Por favor lea las siguientes afirmaciones y seleccione un número (0, 1, 2, 3)</p>
+                    <ul class="quiz-scale-minimal">
+                        <li>
+                            <span class="scale-number">0</span>
+                            <span class="scale-text">No me ha ocurrido</span>
+                        </li>
+                        <li>
+                            <span class="scale-number">1</span>
+                            <span class="scale-text">Me ha ocurrido un poco, o durante parte del tiempo</span>
+                        </li>
+                        <li>
+                            <span class="scale-number">2</span>
+                            <span class="scale-text">Me ha ocurrido bastante, o durante una buena parte del tiempo</span>
+                        </li>
+                        <li>
+                            <span class="scale-number">3</span>
+                            <span class="scale-text">Me ha ocurrido mucho, o la mayor parte del tiempo</span>
+                        </li>
+                    </ul>
+                    <div id="quizContainer"></div>
+                    <button id="quizSubmit" class="btn">Ver resultado </button> 
+                    <div id="quizResult" class="quiz-result hidden"></div>
+                    <p> </p>
+                    <p class="quiz-footer">Cra 9 bis No. 61 - 38 - Tel 57+1 3472311 - franciscoj.ruizj@konradlorenz.edu.co / mariab.garciam@konradlorenz.edu.co - http://cliniklab.konradlorenz.edu.co</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2026 Calma — Sitio informativo sobre estrés y ansiedad.</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
