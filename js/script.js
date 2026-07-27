@@ -52,3 +52,66 @@ filterBtns.forEach(btn => {
 });
 
 renderTecnicas();
+
+// ---------- Quiz de autoevaluación ----------
+const preguntas = [
+  { texto: "¿Con qué frecuencia te sientes abrumado/a por tus responsabilidades?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
+  { texto: "¿Tienes dificultad para conciliar o mantener el sueño por preocupaciones?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
+  { texto: "¿Notas tensión muscular, dolores de cabeza o fatiga sin causa física clara?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
+  { texto: "¿Te cuesta concentrarte por pensamientos repetitivos o negativos?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
+  { texto: "¿Evitas situaciones sociales o tareas por miedo o ansiedad anticipada?", opciones: ["Nunca","A veces","Frecuentemente","Casi siempre"] },
+];
+
+const quizContainer = document.getElementById('quizContainer');
+const quizResult = document.getElementById('quizResult');
+
+quizContainer.innerHTML = preguntas.map((p, i) => `
+  <div class="quiz-question">
+    <p>${i + 1}. ${p.texto}</p>
+    ${p.opciones.map((op, j) => `
+      <label>
+        <input type="radio" name="q${i}" value="${j}"> ${op}
+      </label>
+    `).join('')}
+  </div>
+`).join('');
+
+document.getElementById('quizSubmit').addEventListener('click', () => {
+  let total = 0;
+  let respondidas = 0;
+
+  preguntas.forEach((_, i) => {
+    const seleccion = document.querySelector(`input[name="q${i}"]:checked`);
+    if (seleccion) {
+      total += Number(seleccion.value);
+      respondidas++;
+    }
+  });
+
+  if (respondidas < preguntas.length) {
+    quizResult.textContent = "Por favor responde todas las preguntas antes de ver el resultado.";
+    quizResult.classList.remove('hidden');
+    return;
+  }
+
+  const maxPuntaje = (preguntas[0].opciones.length - 1) * preguntas.length;
+  const porcentaje = Math.round((total / maxPuntaje) * 100);
+
+  let nivel, consejo;
+  if (porcentaje <= 25) {
+    nivel = "Bajo";
+    consejo = "Tus niveles de estrés/ansiedad parecen manejables. Mantén tus hábitos actuales.";
+  } else if (porcentaje <= 50) {
+    nivel = "Moderado";
+    consejo = "Podrías beneficiarte de técnicas de respiración y organización del tiempo.";
+  } else if (porcentaje <= 75) {
+    nivel = "Alto";
+    consejo = "Considera incorporar mindfulness, ejercicio regular y mejorar tu higiene de sueño.";
+  } else {
+    nivel = "Muy alto";
+    consejo = "Te recomendamos buscar apoyo profesional (psicólogo/a) además de estas técnicas.";
+  }
+
+  quizResult.innerHTML = `<strong>Nivel estimado: ${nivel} (${porcentaje}%)</strong><p>${consejo}</p><p><em>Esta autoevaluación es orientativa y no reemplaza un diagnóstico profesional.</em></p>`;
+  quizResult.classList.remove('hidden');
+});
