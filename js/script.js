@@ -115,3 +115,49 @@ document.getElementById('quizSubmit').addEventListener('click', () => {
   quizResult.innerHTML = `<strong>Nivel estimado: ${nivel} (${porcentaje}%)</strong><p>${consejo}</p><p><em>Esta autoevaluación es orientativa y no reemplaza un diagnóstico profesional.</em></p>`;
   quizResult.classList.remove('hidden');
 });
+
+// ---------- Formulario de contacto ----------
+const form = document.getElementById('contactForm');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const messageInput = document.getElementById('message');
+const nameError = document.getElementById('nameError');
+const emailError = document.getElementById('emailError');
+const messageError = document.getElementById('messageError');
+const formSuccess = document.getElementById('formSuccess');
+
+function validarEmail(valor) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let valido = true;
+  formSuccess.classList.add('hidden');
+
+  if (nameInput.value.trim().length < 2) {
+    nameError.textContent = "Ingresa un nombre válido.";
+    valido = false;
+  } else {
+    nameError.textContent = "";
+  }
+
+  if (!validarEmail(emailInput.value.trim())) {
+    emailError.textContent = "Ingresa un correo electrónico válido.";
+    valido = false;
+  } else {
+    emailError.textContent = "";
+  }
+
+  if (messageInput.value.trim().length < 10) {
+    messageError.textContent = "El mensaje debe tener al menos 10 caracteres.";
+    valido = false;
+  } else {
+    messageError.textContent = "";
+  }
+
+  if (valido) {
+    formSuccess.classList.remove('hidden');
+    form.reset();
+  }
+});
