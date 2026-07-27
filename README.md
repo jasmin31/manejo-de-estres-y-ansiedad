@@ -23,14 +23,14 @@ Abrir `index.html` en el navegador. No requiere servidor ni base de datos.
 
 ## Publicación (GitHub Pages)
 1. Subir el repo a GitHub
-2. Settings → Pages → Source: rama `main`, carpeta `/root`
-3. URL pública generada automáticamente
+2. Settings → Pages → Source: rama `main`, carpeta `/ (root)`
+3. Esperar unos minutos y abrir la URL pública
 
 ## Tecnologías
 HTML5, CSS3, JavaScript (vanilla).
 
 ## Demo
-https://TU-USUARIO.github.io/NOMBRE-REPO/
+https://jasmin31.github.io/manejo-de-estres-y-ansiedad/
 
 ## Estado
 Proyecto finalizado: 8 commits, sin base de datos, listo para GitHub Pages.
