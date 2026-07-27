@@ -8,14 +8,14 @@ if (navToggle && nav) {
 
 // ---------- Datos de técnicas ----------
 const tecnicas = [
-  { titulo: "Respiración 4-7-8", cat: "respiracion", texto: "Inhala 4s, sostén 7s, exhala 8s. Reduce la activación del sistema nervioso simpático." },
-  { titulo: "Respiración diafragmática", cat: "respiracion", texto: "Respira desde el abdomen, no el pecho, para bajar la frecuencia cardíaca." },
-  { titulo: "Relajación muscular progresiva", cat: "cuerpo", texto: "Tensa y relaja grupos musculares de pies a cabeza para liberar tensión física." },
-  { titulo: "Ejercicio aeróbico", cat: "cuerpo", texto: "30 minutos de actividad física moderada reducen el cortisol y mejoran el ánimo." },
-  { titulo: "Mindfulness / atención plena", cat: "mente", texto: "Observa pensamientos sin juzgarlos, enfocando la atención en el presente." },
-  { titulo: "Reestructuración cognitiva", cat: "mente", texto: "Identifica y cuestiona pensamientos catastróficos o distorsionados." },
-  { titulo: "Higiene del sueño", cat: "habitos", texto: "Horarios regulares y sin pantallas antes de dormir mejoran la recuperación." },
-  { titulo: "Reducir cafeína y estimulantes", cat: "habitos", texto: "El exceso de cafeína puede imitar o agravar síntomas de ansiedad." },
+  { titulo: "Respiración 4-7-8", cat: "respiracion", texto: "Inhala por 4 segundos, mantén 7 y exhala 8. Repite 4 veces para bajar la tensión y calmar la mente. Sirve cuando te sientas acelerado/a o antes de dormir." },
+  { titulo: "Respiración diafragmática", cat: "respiracion", texto: "Coloca una mano en el abdomen y respira lento. Siente cómo el vientre sube y baja para reducir la activación del cuerpo. Úsala para recuperar calma en momentos de nerviosismo." },
+  { titulo: "Relajación muscular progresiva", cat: "cuerpo", texto: "Tensa cada grupo muscular 5 segundos y luego suelta. Empieza por los pies y sube hasta la cabeza para liberar tensión. Es ideal cuando notas el cuerpo rígido o dolorido." },
+  { titulo: "Ejercicio aeróbico", cat: "cuerpo", texto: "Camina, corre o baila 30 minutos. El movimiento ayuda a liberar estrés, mejorar el ánimo y descargar la energía acumulada. Funciona bien cuando necesitas despejar la mente." },
+  { titulo: "Mindfulness / atención plena", cat: "mente", texto: "Dedica 5 minutos a observar tu respiración y tus pensamientos sin juzgarlos. Regresa al presente cada vez que te distraigas. Es útil para calmar la ansiedad y mejorar la concentración." },
+  { titulo: "Reestructuración cognitiva", cat: "mente", texto: "Anota un pensamiento negativo y pregúntate si es real. Busca una explicación más equilibrada y menos extrema. Esta técnica ayuda a cambiar pensamientos que aumentan el estrés." },
+  { titulo: "Higiene del sueño", cat: "habitos", texto: "Duerme y despierta a la misma hora, evita pantallas antes de dormir y crea una rutina tranquila para descansar mejor. Un buen sueño reduce la irritabilidad y mejora la energía." },
+  { titulo: "Reducir cafeína y estimulantes", cat: "habitos", texto: "Cambia el café por agua o té suave y evita estimulantes por la tarde para que tu cuerpo se relaje más fácil. Menos cafeína ayuda a que la ansiedad sea menos intensa." },
 ];
 
 const grid = document.getElementById('tecnicasGrid');
