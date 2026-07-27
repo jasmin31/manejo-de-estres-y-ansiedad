@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manejo del Estrés y la Ansiedad</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <span class="logo">🧘 Calma</span>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#estres">Estrés</a>
+      <a href="#ansiedad">Ansiedad</a>
+      <a href="#tecnicas">Técnicas</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<section id="inicio" class="hero">
+  <h1>Recupera el control frente al estrés y la ansiedad</h1>
+  <p>Información clara, técnicas prácticas y una autoevaluación para conocer tu nivel actual.</p>
+  <a href="#tecnicas" class="btn">Ver técnicas</a>
+</section>
+
+<section id="estres" class="section">
+  <h2>¿Qué es el estrés?</h2>
+  <p>El estrés es la respuesta natural del cuerpo ante una demanda o amenaza percibida. En dosis controladas es adaptativo, pero si se vuelve crónico afecta el sueño, el ánimo y la salud física.</p>
+  <div class="cards">
+    <div class="card"><h3>Físico</h3><p>Tensión muscular, dolores de cabeza, fatiga.</p></div>
+    <div class="card"><h3>Emocional</h3><p>Irritabilidad, sensación de agobio.</p></div>
+    <div class="card"><h3>Conductual</h3><p>Cambios en apetito, aislamiento, insomnio.</p></div>
+  </div>
+</section>
+
+<section id="ansiedad" class="section alt">
+  <h2>¿Qué es la ansiedad?</h2>
+  <p>La ansiedad es una reacción de alerta ante una amenaza futura o incierta. Se vuelve un problema cuando es desproporcionada, persistente o interfiere con la vida diaria.</p>
+  <div class="cards">
+    <div class="card"><h3>Síntomas físicos</h3><p>Taquicardia, sudoración, opresión en el pecho.</p></div>
+    <div class="card"><h3>Síntomas cognitivos</h3><p>Pensamientos catastróficos, preocupación excesiva.</p></div>
+    <div class="card"><h3>Cuándo buscar ayuda</h3><p>Cuando interfiere con trabajo, estudio o relaciones.</p></div>
+  </div>
+</section>
+
+<section id="tecnicas" class="section">
+  <h2>Técnicas de manejo</h2>
+  <input type="text" id="searchInput" class="search-input" placeholder="Buscar técnica (ej. respiración, sueño, ejercicio)...">
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-cat="todas">Todas</button>
+    <button class="filter-btn" data-cat="respiracion">Respiración</button>
+    <button class="filter-btn" data-cat="cuerpo">Cuerpo</button>
+    <button class="filter-btn" data-cat="mente">Mente</button>
+    <button class="filter-btn" data-cat="habitos">Hábitos</button>
+  </div>
+  <div class="cards" id="tecnicasGrid"></div>
+  <p id="noResults" class="no-results hidden">No se encontraron técnicas.</p>
+</section>
+
+<section id="quiz" class="section alt">
+  <h2>Autoevaluación rápida</h2>
+  <p>Responde con sinceridad. Es orientativo, no un diagnóstico clínico.</p>
+  <div id="quizContainer"></div>
+  <button id="quizSubmit" class="btn">Ver resultado</button>
+  <div id="quizResult" class="quiz-result hidden"></div>
+</section>
+
+<section id="contacto" class="section">
+  <h2>Contacto</h2>
+  <p>¿Dudas o comentarios sobre el sitio? Escríbenos.</p>
+  <form id="contactForm" class="contact-form" novalidate>
+    <label for="name">Nombre</label>
+    <input type="text" id="name" name="name" required>
+    <span class="error" id="nameError"></span>
+
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" required>
+    <span class="error" id="emailError"></span>
+
+    <label for="message">Mensaje</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+    <span class="error" id="messageError"></span>
+
+    <button type="submit" class="btn">Enviar</button>
+    <p id="formSuccess" class="success hidden">Mensaje enviado correctamente (simulado, sin backend).</p>
+  </form>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2026 Calma — Sitio informativo sobre estrés y ansiedad.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
