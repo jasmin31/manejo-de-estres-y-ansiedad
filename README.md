@@ -28,3 +28,9 @@ Abrir `index.html` en el navegador. No requiere servidor ni base de datos.
 
 ## Tecnologías
 HTML5, CSS3, JavaScript (vanilla).
+
+## Demo
+https://TU-USUARIO.github.io/NOMBRE-REPO/
+
+## Estado
+Proyecto finalizado: 8 commits, sin base de datos, listo para GitHub Pages.
