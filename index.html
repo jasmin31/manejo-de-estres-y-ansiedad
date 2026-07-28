@@ -10,57 +10,128 @@
 
 <body>
 
-  <header class="header">
-    <div class="header-inner">
-      <span class="logo">🧘 Calma</span>
-      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
-      <nav class="nav" id="nav">
-        <a href="index.html">Inicio</a>
-        <a href="estres.html">Estrés</a>
-        <a href="ansiedad.html">Ansiedad</a>
-        <a href="tecnicas.html">Tácticas</a>
-        <a href="quiz.html">Quiz</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
-    </div>
+  <header class="hero">
+    <nav class="nav container">
+      <a href="index.html" class="logo">Calma+Bienestar</a>
+      <button id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+      <ul id="nav" class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="estres.html">Información</a></li>
+        <li><a href="tecnicas.html">Tácticas</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <section id="inicio" class="container hero-content">
+      <div>
+        <p class="eyebrow">Información útil y práctica</p>
+        <h1>Manejo del estrés y la ansiedad</h1>
+        <p>
+          Aprende estrategias simples para cuidar tu bienestar emocional y
+          recuperar tu equilibrio diario.
+        </p>
+        <a href="#quiz" class="btn">Comenzar autoevaluación</a>
+      </div>
+    </section>
   </header>
 
-  <main class="main-content">
-    <section id="inicio" class="section page page-home hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <h1>Recupera el control frente al estrés y la ansiedad</h1>
-          <p>Información clara, técnicas prácticas y un espacio pensado para que te relajes y encuentres calma.</p>
-          <a href="tecnicas.html" class="btn">Ver tácticas</a>
-        </div>
-        <div class="hero-image">
-          <img src="imagenes/bienvenida.JPG" alt="imagen de bienvenida">
+  <main>
+    <section id="informacion" class="container section">
+      <h2>¿Qué son el estrés y la ansiedad?</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Estrés</h3>
+          <p>
+            Es la respuesta natural del cuerpo ante demandas o presión.
+            Puede ser útil a corto plazo, pero cuando se vuelve constante
+            afecta el descanso y la concentración.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Ansiedad</h3>
+          <p>
+            Es una sensación de preocupación, tensión o miedo que puede
+            aparecer incluso sin una amenaza evidente.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Señales comunes</h3>
+          <p>
+            Respiración acelerada, tensión muscular, problemas para dormir,
+            dificultad para concentrarte o irritabilidad.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="recursos" class="section alt">
+      <div class="container">
+        <h2>Recursos rápidos</h2>
+        <input id="search" type="search" placeholder="Buscar estrategia..." />
+        <div class="grid cards" id="resource-list">
+          <article class="card" data-search="respiracion respiración calma">
+            <h3>Respiración profunda</h3>
+            <p>Inhala 4 segundos, retén 4 y exhala 6.</p>
+          </article>
+          <article class="card" data-search="movimiento ejercicio caminar">
+            <h3>Movimiento ligero</h3>
+            <p>Camina 10 minutos para reducir la tensión acumulada.</p>
+          </article>
+          <article class="card" data-search="descanso sueño dormir">
+            <h3>Descanso adecuado</h3>
+            <p>Establece horarios y reduce pantallas antes de dormir.</p>
+          </article>
+          <article class="card" data-search="habla apoyo conversar">
+            <h3>Habla con alguien</h3>
+            <p>Compartir lo que sientes puede aliviar la carga emocional.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="estres" class="section page page-estres alt">
-      <div class="section-inner">
-        <h2>¿Qué es el estrés?</h2>
-        <p>El estrés es la respuesta natural del cuerpo ante una demanda o amenaza percibida. En dosis controladas puede
-          ser adaptativo, pero si se vuelve crónico afecta el sueño, el ánimo y la salud física.</p>
-        <div class="cards">
-          <div class="card">
-            <h3>Físico</h3>
-            <p>Tensión muscular, dolores de cabeza, fatiga.</p>
-          </div>
-          <div class="card">
-            <h3>Emocional</h3>
-            <p>Irritabilidad, sensación de agobio.</p>
-          </div>
-          <div class="card">
-            <h3>Conductual</h3>
-            <p>Cambios en apetito, aislamiento, insomnio.</p>
-          </div>
+    <section id="quiz" class="container section">
+      <h2>Autoevaluación breve</h2>
+      <form id="quiz-form">
+        <div class="question">
+          <p>1. ¿Sientes que tu mente está activa la mayor parte del día?</p>
+          <label><input type="radio" name="q1" value="1" /> Sí</label>
+          <label><input type="radio" name="q1" value="0" /> No</label>
         </div>
+        <div class="question">
+          <p>2. ¿Te cuesta conciliar el sueño con frecuencia?</p>
+          <label><input type="radio" name="q2" value="1" /> Sí</label>
+          <label><input type="radio" name="q2" value="0" /> No</label>
+        </div>
+        <div class="question">
+          <p>3. ¿Te sientes cansado o agotado por la presión diaria?</p>
+          <label><input type="radio" name="q3" value="1" /> Sí</label>
+          <label><input type="radio" name="q3" value="0" /> No</label>
+        </div>
+        <button type="submit" class="btn">Ver resultado</button>
+      </form>
+      <div id="quiz-result" class="result"></div>
+    </section>
+
+    <section id="contacto" class="section alt">
+      <div class="container contact-box">
+        <h2>Contacto</h2>
+        <form id="contact-form">
+          <input type="text" id="name" placeholder="Tu nombre" required />
+          <input type="email" id="email" placeholder="Tu correo" required />
+          <textarea id="message" rows="5" placeholder="Escribe tu mensaje" required></textarea>
+          <button type="submit" class="btn">Enviar</button>
+        </form>
+        <p id="form-message" class="form-message"></p>
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Calma+Bienestar</div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 
 </html>

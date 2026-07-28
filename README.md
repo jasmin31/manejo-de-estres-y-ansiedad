@@ -10,6 +10,13 @@ js/script.js
 README.md
 ```
 
+## Cambios recientes
+- Se actualizó el tema de estilos (`css/style.css`) por un diseño más moderno y responsivo.
+- Se eliminaron los marcadores de imagen en las tarjetas de `tecnicas` para evitar huecos vacíos.
+- Se añadió la sección **Robert Karasek** y la matriz de administración del tiempo en `tecnicas.html`.
+- Se adaptó la navegación y el `index.html` al nuevo estilo; se añadieron proxies `styles.css` y `script.js` en la raíz para compatibilidad.
+
+
 ## Características
 - Página de inicio con navegación a secciones
 - Secciones: Estrés, Ansiedad, Técnicas de manejo, Quiz, Contacto
