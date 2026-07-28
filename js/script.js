@@ -34,7 +34,6 @@ function renderCarousel(){
   if (!carouselTrack) return;
   carouselTrack.innerHTML = tecnicas.map(t => `
     <div class="card carousel-item">
-      <div class="image-placeholder">Imagen de ${t.titulo}</div>
       <h3>${t.titulo}</h3>
       <p>${t.texto}</p>
       <span class="tag">${t.cat}</span>
@@ -83,7 +82,6 @@ function renderTecnicas(){
 
   grid.innerHTML = filtradas.map(t => `
     <div class="card">
-      <div class="image-placeholder">Imagen de ${t.titulo}</div>
       <h3>${t.titulo}</h3>
       <p>${t.texto}</p>
       <span class="tag">${t.cat}</span>
